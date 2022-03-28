@@ -11,15 +11,14 @@ import {
   Text,
 } from "@mantine/core";
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
+import { marked } from "marked";
 import { GoMarkdown } from "react-icons/go";
 import RichTextEditor from "../components/RichText";
+import TimeLine from "../components/TimeLine";
+import Report from "../components/Report";
 
 export default function Home() {
   // const [colorScheme, setColorScheme] = useState("light");
-  const [value, onChange] = useState(
-    "<p>Your initial <b>html value</b> or an empty string to init editor without value</p>"
-  );
   const [markdown, setMarkdown] = useState("Leave a comment");
 
   return (
@@ -55,11 +54,12 @@ export default function Home() {
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
                 style={{ fontFamily: "Greycliff CF, sans-serif" }}
               >
-                Write a Markdown
+                Write Markdown
               </Text>
               <Textarea
                 placeholder={markdown}
                 required
+                autosize
                 onChange={(e) => setMarkdown(e.target.value)}
               />
               <Group spacing={4}>
@@ -83,7 +83,11 @@ export default function Home() {
               >
                 Markdown Preview
               </Text>
-              <ReactMarkdown>{markdown}</ReactMarkdown>
+              <div className="post-body">
+                <div
+                  dangerouslySetInnerHTML={{ __html: marked(markdown) }}
+                ></div>
+              </div>
             </div>
           </Grid.Col>
         </Grid>
@@ -101,7 +105,15 @@ export default function Home() {
         >
           Rich Text Editor
         </Text>
-        <RichTextEditor />
+        <RichTextEditor style={{ minHeight: "350px" }} />
+        <Space h="sm" />
+        <Center inline>
+          <Report />
+        </Center>
+
+        {/* Time line */}
+        <Space h="xl" />
+        <TimeLine />
 
         {/* Footer section */}
         <Space h="xl" />
