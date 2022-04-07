@@ -1,0 +1,8 @@
+{
+  "locales": ["en-US", "th-th"],
+  "defaultLocale": "en-US",
+  "pages": {
+    "*": ["common"],
+    "/index": ["report"]
+  }
+}

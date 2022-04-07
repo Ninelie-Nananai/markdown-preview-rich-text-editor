@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Modal, Button, Group, Text } from "@mantine/core";
 import { CheckboxGroup, Checkbox } from "@mantine/core";
 import { InputWrapper, Input, Space } from "@mantine/core";
