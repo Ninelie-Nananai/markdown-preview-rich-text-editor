@@ -1,0 +1,21 @@
+{
+  "title": "Report content!",
+  "sub_title": "Report reason:",
+  "Checkbox": {
+    "1": "Game update",
+    "2": "Comic / Animation Update",
+    "3": "Advertising / Spam",
+    "4": "Inappropriate Behaviour",
+    "5": "Other"
+  },
+  "sub_title2": "More info:",
+  "showNotification": {
+    "title": "Saving your report",
+    "message": "This will take some time..."
+  },
+  "updateNotification": {
+    "title": "Thanks for your report!",
+    "message": "We will look into this and get back to you soon"
+  },
+  "btn": "Report"
+}

@@ -5,37 +5,40 @@ import { InputWrapper, Input, Space } from "@mantine/core";
 import { GoReport } from "react-icons/go";
 import { useNotifications } from "@mantine/notifications";
 import { CheckIcon } from "@modulz/radix-icons";
+import useTranslation from "next-translate/useTranslation";
 
 export default function Report() {
   const [opened, setOpened] = useState(false);
   const [checked, setChecked] = useState(true);
   const notifications = useNotifications();
 
+  let { t } = useTranslation();
+
   return (
     <>
       <Modal
         opened={opened}
         onClose={() => setOpened(false)}
-        title="Report content!"
+        title={t("report:title")}
       >
         <CheckboxGroup
           color="red"
           orientation="vertical"
-          label="Report reason:"
+          label={t("report:sub_title")}
           required
         >
-          <Checkbox value="value1" label="Game update" />
-          <Checkbox value="value2" label="Comic / Animation Update" />
-          <Checkbox value="value3" label="Advertising / Spam" />
-          <Checkbox value="value4" label="Inappropriate Behaviour" />
+          <Checkbox value="value1" label={t("report:Checkbox.1")} />
+          <Checkbox value="value2" label={t("report:Checkbox.2")} />
+          <Checkbox value="value3" label={t("report:Checkbox.3")} />
+          <Checkbox value="value4" label={t("report:Checkbox.4")} />
           <Checkbox
             value="value5"
-            label="Other"
+            label={t("report:Checkbox.5")}
             onClick={() => setChecked(!checked)}
           />
         </CheckboxGroup>
         <Space h="sm" />
-        <InputWrapper id="input-demo" label="More information:">
+        <InputWrapper id="input-demo" label={t("report:sub_title2")}>
           <Input id="input-demo" disabled={checked} />
         </InputWrapper>
         <Space h="sm" />
@@ -45,8 +48,8 @@ export default function Report() {
           onClick={() => {
             const id = notifications.showNotification({
               loading: true,
-              title: "Saving your report",
-              message: "This will take some time...",
+              title: t("report:showNotification.title"),
+              message: t("report:showNotification.message"),
               autoClose: false,
               disallowClose: true,
             });
@@ -55,8 +58,8 @@ export default function Report() {
               notifications.updateNotification(id, {
                 id,
                 color: "teal",
-                title: "Thanks for your report!",
-                message: "We will look into this and get back to you soon",
+                title: t("report:updateNotification.title"),
+                message: t("report:updateNotification.message"),
                 icon: <CheckIcon />,
                 autoClose: 3000,
               });
@@ -66,7 +69,7 @@ export default function Report() {
         >
           <Group spacing={5}>
             <GoReport />
-            Report
+            {t("report:btn")}
           </Group>
         </Button>
       </Modal>
@@ -78,7 +81,7 @@ export default function Report() {
         >
           <Group spacing={5}>
             <GoReport />
-            Report
+            {t("report:btn")}
           </Group>
         </Button>
       </Group>
