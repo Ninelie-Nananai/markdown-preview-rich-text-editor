@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import {
   Group,
@@ -14,7 +15,6 @@ import { useState } from "react";
 import { marked } from "marked";
 import { GoMarkdown } from "react-icons/go";
 import RichTextEditor from "../components/RichText";
-import TimeLine from "../components/TimeLine";
 import Report from "./report";
 import useTranslation from "next-translate/useTranslation";
 
